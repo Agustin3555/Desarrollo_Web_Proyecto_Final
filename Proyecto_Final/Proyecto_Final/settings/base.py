@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.post',
     'apps.registrate',
     'apps.crearpost',
+    'apps.Prueba',
 ]
 
 MIDDLEWARE = [

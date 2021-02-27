@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
+
 def registrate(request):
-	ctx={
+	ctx = {
 	}
-	return render(request, "registrate.html",ctx)
+	return render(request, "registrate.html", ctx)
