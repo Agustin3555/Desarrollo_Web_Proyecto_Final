@@ -22,7 +22,7 @@ def hola(request):
 
     u = Usuarios.objects.get(usuario_id=1)
 
-    template = loader.get_template("prueba.html")
+    template = loader.get_template("ver_publicaciones.html")
 
     context = {"usuario": u.ciudad}
 

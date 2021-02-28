@@ -1,13 +1,11 @@
 from django.http import HttpResponse
 from django.template import loader
-import datetime
 
 
-def saludo(request):
+def home(request):
 
-    now = datetime.datetime.now()
     template = loader.get_template("index.html")
-    context = {"hora": now,
-               "alumno": "felipe"}
+
+    context = {}
 
     return HttpResponse(template.render(context, request))
