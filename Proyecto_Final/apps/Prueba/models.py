@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Usuarios(models.Model):  # ————————————————————————————————————————————————————————————————————————————— USUARIOS
     usuario_id = models.AutoField(primary_key=True)
 
@@ -8,6 +7,12 @@ class Usuarios(models.Model):  # ———————————————�
     contrasenia = models.CharField(max_length=30, null=False)
     nombres = models.CharField(max_length=40, null=False)
     apellidos = models.CharField(max_length=40, null=False)
+    sexo = (
+        ('masculino', 'Masculino'),
+        ('femenino', 'Femenino'),
+        (otro, 'Otro')
+        )
+    sexo = models.CharField(max_length=30, null=False, choices= sexo)
     ciudad = models.CharField(max_length=50, null=False)
     descripcion_propia = models.CharField(max_length=500, null=True)
     promedio_calificacion = models.DecimalField(max_digits=2, decimal_places=2, null=True)
@@ -85,7 +90,11 @@ class Nodo_Mascota(models.Model):
 class Datos_Mascota(models.Model):
     id_datos_mascota = models.AutoField(primary_key=True)
 
-    sexo = models.BooleanField(null=False)
+    sexo = (
+        ('macho', 'Macho'),
+        ('hembra', 'Hembra'),
+        )
+    sexo = models.CharField(max_length=30, null=False, choices= sexo)
     especie = models.CharField(max_length=25, null=False)
     raza = models.CharField(max_length=25, null=False)
     edad = models.IntegerField(null=False)
