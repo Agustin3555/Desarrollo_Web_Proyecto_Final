@@ -1,5 +1,5 @@
 from django.db import models
-# Create your models here.
+
 
 class Usuario(models.Model):
     usuario_id = models.AutoField(primary_key=True)
@@ -12,5 +12,3 @@ class Usuario(models.Model):
     ciudad = models.CharField(max_length=50, null=False)
     descripcion_propia = models.CharField(max_length=500, null=True)
     promedio_calificacion = models.DecimalField(max_digits=2, decimal_places=2, null=True)
-    
-
