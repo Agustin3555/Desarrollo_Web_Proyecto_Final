@@ -39,7 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.home',
+    'apps.denuncia',
+    'apps.mascota',
+    'apps.mensaje',
+    'apps.postulante',
+    'apps.publicacion',
+    'apps.usuario',
     'apps.publicaciones',
+    'apps.Prueba',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +86,7 @@ WSGI_APPLICATION = 'Proyecto_Final.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'adopciones',
     }
 }
 
