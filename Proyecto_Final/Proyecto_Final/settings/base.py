@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'apps.postulante',
     'apps.publicacion',
     'apps.usuario',
-
+    'apps.publicaciones',
+    'apps.Prueba',
 ]
 
 MIDDLEWARE = [
