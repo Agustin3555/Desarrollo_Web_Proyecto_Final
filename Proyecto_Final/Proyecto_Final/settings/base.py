@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'apps.Prueba',
 ]
 
+AUTH_USER_MODEL = 'apps.usuario.Usuario'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
