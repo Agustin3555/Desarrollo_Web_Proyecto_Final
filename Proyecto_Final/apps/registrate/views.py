@@ -35,4 +35,4 @@ def registro(request):
 
     template = loader.get_template("registrate.html")
 
-    return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(request, context))

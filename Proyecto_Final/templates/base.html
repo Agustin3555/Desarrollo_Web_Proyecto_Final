@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="es">
     <head>
 
@@ -10,7 +13,7 @@
 
         <title>{% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" href={% include "static/css/style.css" %}>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -25,10 +28,10 @@
             <h1 class="titulo">{% block h1 %}{% endblock %}</h1>
             <nav class="menuNav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Adopción</a></li>
-                    <li><a href="registro.html">Registrate</a></li>
-                    <li><a href="iniciarsesion.htm">Ingresar</a></li>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Adopción</a></li>
+                    <li><a href="">Registrate</a></li>
+                    <li><a href="">Ingresar</a></li>
                 </ul>
             </nav>
         </header>

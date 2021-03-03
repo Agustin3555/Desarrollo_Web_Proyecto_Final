@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'apps.postulante',
     'apps.publicacion',
     'apps.usuario',
+    'apps.registrate',
+    'apps.login',
 ]
 
 AUTH_USER_MODEL = 'usuario.Usuario'
@@ -128,7 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR), 'static'),)
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
