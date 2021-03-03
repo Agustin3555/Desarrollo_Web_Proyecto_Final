@@ -1,5 +1,5 @@
 from django.db import models
-from apps.usuario.models import Usuario
+from Proyecto_Final.apps.usuario.models import Usuario
 
 
 class Denuncia(models.Model):

@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+
         <meta charset="UTF-8">
+        <meta name="description" content="Adopción responsable de mascotas">
+        <meta name="robots" content="index,follow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>{% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href={% include "static/css/style.css" %}>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
     </head>
     <body>
 
-        <h1>{% block h1 %}{% endblock %}</h1>
+        <header>
+            <img id="logoMenu" src="media/logo_menu_trans.png" alt="logo">
+            <h1 class="titulo">{% block h1 %}{% endblock %}</h1>
+            <nav class="menuNav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Adopción</a></li>
+                    <li><a href="registro.html">Registrate</a></li>
+                    <li><a href="iniciarsesion.htm">Ingresar</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <ul>
-            <li><a href="http://127.0.0.1:8000/home/">Home</a></li>
-            <li><a href="http://127.0.0.1:8000/publicaciones/">Publicaciones</a></li>
-            <li><a href="http://127.0.0.1:8000/publicaciones/">Buscar</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Iniciar Sesión</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Regístrate</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Crear Publicación</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Perfil</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Guardados</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Correo</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Datos de Cuenta</a></li>
-            <li><a href="http://127.0.0.1:8000/home/">Salir</a></li>
-        </ul>
+        {% block main %}{% endblock %}
+
+        <footer id="pieDePag">
+            <p>2021.COMUNIDAD DE ADOPCIÓN RESPONSABLE DE MASCOTAS. TODOS LOS DERECHOS RESERVADOS ©</p>
+            <P>Produced by Grupo 5 - Informatorio Chaco</P>
+        </footer>
 
     </body>
 </html>
