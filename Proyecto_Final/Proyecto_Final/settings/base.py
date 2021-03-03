@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'apps.publicacion',
     'apps.usuario',
     'apps.publicaciones',
-    'apps.Prueba',
 ]
 
 AUTH_USER_MODEL = 'apps.usuario.Usuario'
