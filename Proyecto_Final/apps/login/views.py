@@ -5,4 +5,4 @@ def entrar(request):
 
     context = {}
 
-    render(request, 'entrar.html', context)
+    return render(request, 'entrar.html', context)

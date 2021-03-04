@@ -24,14 +24,14 @@
     <body>
 
         <header>
-            <img id="logoMenu" src="media/logo_menu_trans.png" alt="logo">
+            <img id="logoMenu" src="{% static 'media/logo_menu_trans.png' %}" alt="logo">
             <h1 class="titulo">{% block h1 %}{% endblock %}</h1>
             <nav class="menuNav">
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="">Adopción</a></li>
                     <li><a href="">Registrate</a></li>
-                    <li><a href="">Ingresar</a></li>
+                    <li><a href="{% url 'entrar' %}">Ingresar</a></li>
                 </ul>
             </nav>
         </header>
