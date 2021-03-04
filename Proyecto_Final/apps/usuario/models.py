@@ -6,7 +6,7 @@ class Usuario(AbstractUser):
 
     sexo = models.CharField(
         max_length=30, blank=True, null=False, choices=(
-            ('masculino', 'masculino'), ('femenino', 'femenino'), ('otro', 'otro')
+            ('masculino', 'Masculino'), ('femenino', 'Femenino'), ('otro', 'Otro')
         )
     )
     ciudad = models.CharField(max_length=50, null=False)

@@ -6,23 +6,28 @@
 
 {% block main %}
 
-<main>
+    {% load crispy_forms_tags %}
 
-    <h2 class="titulo">Ingresar</h2>
+    <main>
 
-    <form id="registroUsuario" action="">
-        <label for="nombre">Nombre de usuario (*) </label>
-        <input type="text" name="nombreUsuario">
-        <label for="password">Contraseña (*) </label>
-        <input type="password" name="password">  <br>
-        <input class= "boton" id="botonIniciarSesion" type="button" value="Iniciar Sesión">
-    </form>
+        <h2 class="titulo">Ingresar</h2>
 
-    <ul class="links">
-        <li><a href="#">¿Olvidaste tu contraseña?</a></li>
-        <li><a href="registrate/">Crear una cuenta nueva</a></li>
-    </ul>
+        <form id="registroUsuario" action="" method="post">
 
-</main>
+            {% csrf_token %}
+            {{ form | crispy }}
+
+            <input type="submit" value="ingresar" name="nombreUsuario">
+
+        </form>
+
+        <ul class="links">
+
+            <li><a href="#">¿Olvidaste tu contraseña?</a></li>
+            <li><a href="registrate/">Crear una cuenta nueva</a></li>
+
+        </ul>
+
+    </main>
 
 {% endblock %}
