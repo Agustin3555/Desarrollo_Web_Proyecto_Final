@@ -1,7 +1,11 @@
 from django.urls import path
-from . import views
+from django.conf.urls import url
+
+from apps.home import views as home_views
+
+from apps.registrate.views import registro
 
 
 urlpatterns = [
-    path('home/', views.home),
+    url(r'^$',home_views.index, name='index'),
 ]

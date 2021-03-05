@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Home{% endblock %}
 
 {% block h1 %}Adopción Responsable de Mascotas{% endblock %}
@@ -10,10 +10,10 @@
 
         <div class="slider">
             <ul>
-                <li><img src="media/imgSlider1.jpg" alt=""></li>
-                <li><img src="media/imgSlider2.jpg" alt=""></li>
-                <li><img src="media/imgSlider3.jpg" alt=""></li>
-                <li><img src="media/imgSlider4.jpg" alt=""></li>
+                <li><img src="{% static 'media/imgSlider1.jpg' %}" alt=""></li>
+                <li><img src="{% static 'media/imgSlider2.jpg' %}" alt=""></li>
+                <li><img src="{% static 'media/imgSlider3.jpg' %}" alt=""></li>
+                <li><img src="{% static 'media/imgSlider4.jpg' %}" alt=""></li>
             </ul>
         </div>
 
