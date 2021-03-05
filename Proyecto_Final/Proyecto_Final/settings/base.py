@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDURECT_URL = '/'
 
 # Application definition
 
@@ -38,15 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.home',
     'apps.denuncia',
+    'apps.home',
+    'apps.login',
     'apps.mascota',
     'apps.mensaje',
     'apps.postulante',
     'apps.publicacion',
-    'apps.usuario',
     'apps.registrate',
-    'apps.login',
+    'apps.usuario',
 ]
 
 AUTH_USER_MODEL = 'usuario.Usuario'
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'Proyecto_Final.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'adopciones',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

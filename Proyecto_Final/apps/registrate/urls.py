@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views as registrate_views
 
 
 urlpatterns = [
-    url(r'^registrate/', registrate_views.registro),
+    path('registrate/', registrate_views.registro, name='registrate'),
 ]
