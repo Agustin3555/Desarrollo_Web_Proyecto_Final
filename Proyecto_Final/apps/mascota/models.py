@@ -13,5 +13,5 @@ class Mascota(models.Model):
     raza = models.CharField(max_length=25, null=False)
     edad = models.IntegerField(null=False)
     descripcion = models.CharField(max_length=100, null=False)
-    usuario_futuro_duenio = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
+    usuario_duenio = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
     estado = models.BooleanField(null=True)
