@@ -1,30 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Registrate{% endblock %}
+{% block title %}Ingresar{% endblock %}
 
 {% block h1 %}Adopción Responsable de Mascotas{% endblock %}
 
 {% block main %}
 
-    {% load crispy_forms_tags %}
-
     <main>
 
         <h2 class="titulo">Ingresar</h2>
 
-        <form id="registroUsuario" action="" method="post">
+        <form action="" method="post">
 
             {% csrf_token %}
-            {{ form | crispy }}
+            {{ form }}
 
-            <input type="submit" value="ingresar" name="nombreUsuario">
+            <input type="submit" value="ingresar">
 
         </form>
 
         <ul class="links">
 
             <li><a href="#">¿Olvidaste tu contraseña?</a></li>
-            <li><a href="registrate/">Crear una cuenta nueva</a></li>
+            <li><a href="{% url 'registrate' %}">Crear una cuenta nueva</a></li>
 
         </ul>
 

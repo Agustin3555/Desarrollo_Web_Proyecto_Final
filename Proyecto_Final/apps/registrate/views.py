@@ -8,7 +8,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = Usuario
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'sexo', 'ciudad', 'email', 'password1', 'password2']
 
 
 def registro(request):
@@ -27,7 +27,7 @@ def registro(request):
                                 password=formulario.cleaned_data['password1'])
             login(request, user)
 
-            return redirect(to="home/")
+            return redirect(to='home')
 
         context['formulario'] = formulario
 

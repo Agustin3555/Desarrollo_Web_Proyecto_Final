@@ -31,7 +31,17 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="">Adopción</a></li>
                     <li><a href="{% url 'registrate' %}">Registrate</a></li>
-                    <li><a href="{% url 'entrar' %}">Ingresar</a></li>
+
+                    {% if user.is_authenticated %}
+
+                        <li><a href="#">{{ user.username }}</a></li>
+                        <li><a href="{% url 'logout' %}">Cerrar</a></li>
+
+                    {% else %}
+
+                        <li><a href="{% url 'login' %}">Entrar</a></li>
+
+                    {% endif %}
                 </ul>
             </nav>
         </header>
