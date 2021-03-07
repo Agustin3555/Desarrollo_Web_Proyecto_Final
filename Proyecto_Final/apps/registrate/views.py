@@ -31,4 +31,4 @@ def registro(request):
 
         context['formulario'] = formulario
 
-    return render(request, 'registrate.html', context)
+    return render(request, 'registration/registrate.html', context)
