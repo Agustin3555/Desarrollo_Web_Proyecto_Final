@@ -7,7 +7,11 @@ class Denuncia(models.Model):
 
     usuario_denunciante = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
     usuario_denunciado = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
-    fecha = models.DateField(null=False)
-    tipo = models.CharField(max_length=1, null=False)
-    comentario = models.CharField(max_length=500, null=False)
+    fecha = models.DateTimeField(auto_now=True, null=False)
+    tipo = models.CharField(max_length=1, blank=True, null=False,
+                            choices=(('a', 'Dato/s falso/s en publicaciones'),
+                                     ('b', 'Los animales no tienen todas las vacunas necesarias'),
+                                     ('c', 'Sobreexplotación al animal hembra'),
+                                     ('d', 'Maltrato animal')))
+    comentario = models.CharField(max_length=1500, null=False)
     estado = models.BooleanField(null=True)

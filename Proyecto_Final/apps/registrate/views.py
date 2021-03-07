@@ -8,7 +8,11 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = Usuario
-        fields = ['username', 'first_name', 'last_name', 'sexo', 'ciudad', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'sexo', 'provincia', 'ciudad',
+                  'username', 'email', 'password1', 'password2']
+        labels = {'sexo': 'Sexo',
+                  'provincia': 'Provincia',
+                  'ciudad': 'Ciudad'}
 
 
 def registro(request):

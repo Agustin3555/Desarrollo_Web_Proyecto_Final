@@ -8,10 +8,9 @@ class Mascota(models.Model):
 
     publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE, related_name="+", null=True)
     foto = models.ImageField(upload_to='media', null=False)
-    especie = models.CharField(max_length=25, null=False)
-    sexo = models.CharField(max_length=30, blank=True, null=False, choices=(('macho', 'Macho'), ('hembra', 'Hembra')))
-    raza = models.CharField(max_length=25, null=False)
+    sexo = models.CharField(max_length=6, blank=True, null=False, choices=(('macho', 'Macho'),
+                                                                           ('hembra', 'Hembra')))
+    raza = models.CharField(max_length=50, null=True)
     edad = models.IntegerField(null=False)
-    descripcion = models.CharField(max_length=100, null=False)
-    usuario_duenio = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
-    estado = models.BooleanField(null=True)
+    descripcion = models.CharField(max_length=500, null=False)
+    usuario_futuro_duenio = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=True)

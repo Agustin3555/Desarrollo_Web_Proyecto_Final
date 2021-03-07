@@ -15,7 +15,7 @@ class Chat(models.Model):
 class Mensaje(models.Model):
     id_mensaje = models.AutoField(primary_key=True)
 
-    correo = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name="+", null=False)
-    usuario_emisor = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="+", null=False)
-    mensaje = models.CharField(max_length=250, null=True)
-    fecha = models.DateField(null=False)
+    chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name="+", null=False)
+    usuario_emisor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=False)
+    mensaje = models.CharField(max_length=1500, null=True)
+    fecha = models.DateTimeField(auto_now=True, null=False)

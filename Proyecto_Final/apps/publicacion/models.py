@@ -5,7 +5,11 @@ from apps.usuario.models import Usuario
 class Publicacion(models.Model):
     id_publicacion = models.AutoField(primary_key=True)
 
-    usuario_c = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name="+", null=False)
-    fecha = models.DateField(null=False)
+    usuario_creador = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
+    foto = models.ImageField(upload_to='media', null=True)
+    fecha = models.DateTimeField(auto_now=True, null=False)
     descripcion = models.CharField(max_length=500, null=True)
+    especie = models.CharField(max_length=5, blank=True, null=False, choices=(('perro', 'Perro'),
+                                                                              ('gato', 'Gato')))
+    cantidad_de_mascotas = models.PositiveIntegerField(null=True)
     estado = models.BooleanField(null=False)
