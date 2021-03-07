@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
+from apps.mascota.views import crear_mascota
 
 
 class Post_Form(ModelForm):
@@ -28,10 +29,8 @@ def crear_publicacion(request):
         if form.is_valid():
 
             form.save()
-            return redirect(to='home')
 
-        else:
-            return render(request, 'publicacion/crear_publicacion.html', {'exception': 'Error'})  # Mensaje
+            return redirect(to='home')
 
     return render(request, 'publicacion/crear_publicacion.html', {'form': form})
 

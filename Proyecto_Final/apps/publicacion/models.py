@@ -6,7 +6,7 @@ class Publicacion(models.Model):
     id_publicacion = models.AutoField(primary_key=True)
 
     usuario_creador = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
-    foto = models.ImageField(upload_to='media', null=True)
+    foto = models.ImageField(upload_to='media', null=False)
     fecha = models.DateTimeField(auto_now=True, null=False)
     descripcion = models.CharField(max_length=500, null=True)
     especie = models.CharField(max_length=5, blank=True, null=False, choices=(('perro', 'Perro'),
