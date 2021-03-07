@@ -1,18 +1,15 @@
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
-from apps.mascota.views import crear_mascota
+import datetime
 
 
 class Post_Form(ModelForm):
 
     class Meta:
         model = Publicacion
-        fields = ['foto', 'descripcion', 'especie', 'cantidad_de_mascotas']
-        labels = {'foto': 'Foto General',
-                  'descripcion': 'Descripción General',
-                  'especie': 'Especie',
-                  'cantidad_de_mascotas': 'Número de Mascotas'}
+        fields = {'descripcion', 'foto', 'especie', 'cantidad_de_mascotas'}
+        labels = {'descripcion': 'Descripción General', }
 
 
 def crear_publicacion(request):
@@ -26,11 +23,15 @@ def crear_publicacion(request):
 
         form = Post_Form(data=request.POST, instance=publicacion)
 
+        print(request.POST)
+
         if form.is_valid():
 
             form.save()
-
             return redirect(to='home')
+
+        else:
+            return render(request, 'publicacion/crear_publicacion.html', {'exception': 'Error'})
 
     return render(request, 'publicacion/crear_publicacion.html', {'form': form})
 
