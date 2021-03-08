@@ -8,7 +8,8 @@ class Post_Form(ModelForm):
 
     class Meta:
         model = Publicacion
-        fields = {'foto', 'especie', 'cantidad_de_mascotas', 'descripcion'}
+        fields = {'descripcion', 'foto', 'especie', 'cantidad_de_mascotas'}
+        labels = {'descripcion': 'Descripción General', }
 
 
 def crear_publicacion(request):
@@ -30,7 +31,7 @@ def crear_publicacion(request):
             return redirect(to='home')
 
         else:
-            return render(request, 'publicacion/crear_publicacion.html')
+            return render(request, 'publicacion/crear_publicacion.html', {'exception': 'Error'})
 
     return render(request, 'publicacion/crear_publicacion.html', {'form': form})
 
