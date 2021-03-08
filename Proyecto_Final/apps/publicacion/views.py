@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
-import datetime
 
 
 class Post_Form(ModelForm):
@@ -14,24 +13,20 @@ class Post_Form(ModelForm):
 
 def crear_publicacion(request):
 
-    form = Post_Form()
-
     if request.method == 'POST':
 
         publicacion = Publicacion(usuario_creador=request.user,
                                   estado=True)
 
-        form = Post_Form(data=request.POST, instance=publicacion)
-
-        print(request.POST)
+        form = Post_Form(request.POST, request.FILES, instance=publicacion)
 
         if form.is_valid():
 
             form.save()
             return redirect(to='home')
 
-        else:
-            return render(request, 'publicacion/crear_publicacion.html', {'exception': 'Error'})
+    else:
+        form = Post_Form()
 
     return render(request, 'publicacion/crear_publicacion.html', {'form': form})
 

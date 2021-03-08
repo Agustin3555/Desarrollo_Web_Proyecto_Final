@@ -12,7 +12,7 @@
 
         <h2 class="titulo">Crear Publicación</h2>
 
-        <form id="crearPublicacion" method="post">
+        <form id="crearPublicacion" method="post" enctype="multipart/form-data">
 
             {% csrf_token %}
             {{ form }}
