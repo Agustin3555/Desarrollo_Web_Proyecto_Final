@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('apps.publicacion.urls')),
     path('', include('apps.mascota.urls')),
     path('', include('apps.usuario.urls')),
+    path('', include('apps.denuncia.urls')),
 ]
 
 if settings.DEBUG:
