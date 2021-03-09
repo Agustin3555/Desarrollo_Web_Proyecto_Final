@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
     margin:0px;
     padding: 0px;
@@ -7,7 +7,7 @@
 
 body {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #F0EFEB;
 }
 
@@ -16,7 +16,7 @@ body {
 .epigrafe{
     text-align: center;
     font-size: smaller;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;  
 }
 
 .titulo {
@@ -31,12 +31,21 @@ body {
     font-weight: bold;
 }
 
+/*título del header*/
+
+header div {
+    display: inline-flex;
+}
+header a {
+    text-decoration: none;
+}
+
 
 /*menu de navegacion*/
 .menuNav{
     position: absolute;
     right: 0px;
-
+     
 }
 header{
     padding-left: 1em;
@@ -69,11 +78,11 @@ header{
     text-transform: uppercase;
     letter-spacing: 1px;
     border-right: black solid 1px;
+    padding: 8px;
 }
 
 .menuNav ul li a {
     color: #DDA15E;
-    padding: 5px;
     text-decoration: none;
 }
 
@@ -232,8 +241,93 @@ form {
     font-weight: bold;
 }
 
+/*Perfil Usuario Propio*/
+
+#perfilUsuarioPropio {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: 1fr;
+}
+
+#infoUser {
+    margin-top: 1em;
+    background-color: #B7B7A4;
+    justify-self: center;
+    text-align: center;
+}
+
+#iconUsuarioContainer{
+    width: 15%;
+    margin:0 auto;
+}
+
+#iconUserImg {
+    width: 100%;
+}
 
 
+
+#asideOpcionesUser{
+    grid-row: 1/3;
+    grid-column: 2/3;
+    margin-top: 1em;
+}
+
+#publicaciones {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+main ul li {
+    list-style: none;
+}
+
+
+/*perfil usuario externo*/
+#perfilUsuarioExterno{
+    display: flex;
+    justify-items: center;
+}
+
+main a{
+    text-decoration: none;
+    color: #DDA15E;
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+    letter-spacing: 1px;
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: #BC6C25;
+    font-weight: bold;
+}
+
+/*denuncias*/
+
+#detalle {
+    padding-top: 8px ;
+    padding-bottom: 8px;
+}
+
+#botonDenunciar {
+    background-color: #283618;
+    color: white;
+    font-family:'Open Sans', sans-serif;
+    font-size: medium;
+    letter-spacing: 1px;
+}
+
+#botonDenunciar:hover {
+    background-color: #BC6C25;
+}
+
+#contenedorBotonDenunciar {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-top: 2px ;
+    margin:0 auto ;
+}
 
 /*pie de pagina*/
 footer {
