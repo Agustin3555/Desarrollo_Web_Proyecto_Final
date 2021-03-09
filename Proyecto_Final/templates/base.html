@@ -24,8 +24,13 @@
     <body>
 
         <header>
-            <img id="logoMenu" src="{% static 'media/logo_menu_trans.png' %}" alt="logo">
-            <h1 class="titulo">{% block h1 %}{% endblock %}</h1>
+            <a href="{% url 'home' %}">
+                <div>
+                    <img id="logoMenu" src="{% static 'media/logo_menu_trans.png' %}" alt="logo">
+                    <h1 class="titulo">Adopción Responsable de Mascotas</h1>
+                </div>
+            </a>
+
             <nav class="menuNav">
                 <ul>
                     <li><a href="{% url 'home' %}">Home</a></li>
@@ -33,8 +38,7 @@
 
                     {% if user.is_authenticated %}
 
-                        <li><a href="{% url 'crear_publicacion' %}">Crear Post</a></li>
-                        <li><a href="#">{{ user.username }}</a></li>
+                        <li><a href="{% url 'ver_perfil' %}">{{ user.username }}</a></li>
                         <li><a href="{% url 'logout' %}">Cerrar</a></li>
 
                     {% else %}
