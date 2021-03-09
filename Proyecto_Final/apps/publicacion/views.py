@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
+from apps.publicacion.models import Contador
 
 
 class Post_Form(ModelForm):
@@ -8,7 +9,7 @@ class Post_Form(ModelForm):
     class Meta:
         model = Publicacion
         fields = {'descripcion', 'foto', 'especie', 'cantidad_de_mascotas'}
-        labels = {'descripcion': 'Descripción General', }
+        labels = {'descripcion': 'Descripción General'}
 
 
 def crear_publicacion(request):
@@ -23,7 +24,11 @@ def crear_publicacion(request):
         if form.is_valid():
 
             form.save()
-            return redirect(to='home')
+
+            contador = Contador.objects.create(publicacion=publicacion, i=request.POST['cantidad_de_mascotas'])
+            contador.save()
+
+            return redirect(to='crear_mascota')
 
     else:
         form = Post_Form()

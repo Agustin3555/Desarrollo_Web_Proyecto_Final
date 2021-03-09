@@ -13,3 +13,10 @@ class Publicacion(models.Model):
                                                                               ('gato', 'Gato')))
     cantidad_de_mascotas = models.PositiveIntegerField(null=True)
     estado = models.BooleanField(null=False)
+
+
+class Contador(models.Model):
+    id_contador = models.AutoField(primary_key=True)
+
+    publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE, related_name="+", null=True)
+    i = models.PositiveIntegerField(null=False)
