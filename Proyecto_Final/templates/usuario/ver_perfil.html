@@ -8,7 +8,7 @@
 
     {% load static %}
 
-    <main id="perfilUsuarioPropio" >
+    <main id="perfilUsuarioPropio">
 
         <div id="infoUser">
             <div id="iconUsuarioContainer"> <img id="iconUserImg" src="{% static 'img/iconUsuario.png' %}" alt="iconUsuario"></div>
@@ -49,6 +49,42 @@
 
         <div id="publicaciones">
             <h2 class="titulo">Tus publicaciones</h2>
+
+            {% for publicacion in publicaciones_usuario %}
+
+                <div id="publicacion">
+
+                    <ul>
+                        <li>Usuario: {{ publicacion.usuario_creador }}</li>
+                        <li>Especie: {{ publicacion.especie }}</li>
+                        <li>Foto: <img src="{{ MEDIA_URL }}{{ publicacion.foto.url }}"></li>
+                        <li>Descripción: {{ publicacion.descripcion }}</li>
+                        <li>Fecha: {{ publicacion.fecha }}</li>
+                        <li>Estado: {{ publicacion.estado }}</li>
+                    </ul>
+
+                    {% for mascota in mascotas %}
+
+                        {% if publicacion == mascota.publicacion %}
+
+                            <ul>
+                                <li>Foto: <img src="{{ MEDIA_URL }}{{ mascota.foto.url }}"></li>
+                                <li>Sexo: {{ mascota.sexo }}</li>
+                                <li>Raza: {{ mascota.raza }}</li>
+                                <li>Edad: {{ mascota.edad }}</li>
+                                <li>Descripcion: {{ mascota.descripcion }}</li>
+                                <li>Estado: {{ mascota.estado }}</li>
+                                <li>Futuro Dueño: {{ mascota.usuario_futuro_duenio }}</li>
+                            </ul>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
         </div>
 
     </main>

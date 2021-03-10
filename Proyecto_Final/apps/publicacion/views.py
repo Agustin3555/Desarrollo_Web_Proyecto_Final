@@ -1,7 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
 from apps.publicacion.models import Contador
+from apps.mascota.models import Mascota
 
 
 class Post_Form(ModelForm):
@@ -34,6 +36,34 @@ def crear_publicacion(request):
         form = Post_Form()
 
     return render(request, 'publicacion/crear_publicacion.html', {'form': form})
+
+
+def ver_publicaciones(request):
+
+    context = {'publicaciones': Publicacion.objects.all,
+               'mascotas': Mascota.objects.all}
+
+    return render(request, 'publicacion/ver_publicaciones.html', context)
+
+
+def filtrar_por_especie(request):
+
+    if request.GET['prd']:
+
+        especie = request.GET['prd']
+
+        context = {'publicaciones': Publicacion.objects.filter(especie=especie),
+                   'mascotas': Mascota.objects.all}
+
+    return HttpResponse()
+
+
+def filtrar_por_sexo(request):
+
+    context = {'publicaciones': Publicacion.objects.all,
+               'mascotas': Mascota.objects.all}
+
+    return render(request, 'publicacion/ver_publicaciones.html', context)
 
 
 # __________________ELIMINAR PUBLICACION
