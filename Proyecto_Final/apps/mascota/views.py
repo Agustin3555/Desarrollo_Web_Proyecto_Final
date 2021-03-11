@@ -50,6 +50,43 @@ def crear_mascota(request):
     return render(request, 'publicacion/crear_mascota.html', {'form': form, 'pet_number': pet_number})
 
 
+def ver_mascotas(request):
+
+    context = {}
+
+    if request.GET['publicacion']:
+
+        publicacion = get_first_number_found(request.GET['publicacion'])
+        mascotas = Mascota.objects.filter(publicacion=publicacion)
+
+        context = {'mascotas': mascotas,
+                   'publicacion': publicacion}
+
+    return render(request, 'publicacion/ver_mascotas.html', context)
+
+
+def get_first_number_found(text: str):
+
+    i = 0
+
+    for i in range(len(text)):
+
+        if text[i].isdigit():
+            break
+
+    numbers = ''
+
+    while i < len(text):
+
+        if not text[i].isdigit():
+            break
+
+        numbers += text[i]
+        i += 1
+
+    return int(numbers)
+
+
 # __________________ELIMINAR MASCOTA
 # __________________EDICION DE DATOS DE MASCOTAS
 # __________________LISTAR MASCOTAS

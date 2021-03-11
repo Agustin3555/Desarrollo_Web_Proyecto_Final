@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Mis Publicaciones{% endblock %}
+{% block title %}Publicaciones{% endblock %}
 
 {% block main %}
 
@@ -9,7 +9,20 @@
     <main>
 
         <div id="publicaciones">
-            <h2 class="titulo">Mis Publicaciones</h2>
+            <h2 class="titulo">Publicaciones</h2>
+
+            <div>
+                <form action="{% url 'busqueda_filtrada_especie' %}" method="get">
+
+                    <input type="radio" name="especie" value="perro">
+                    <label for="perro">Perro</label>
+                    <input type="radio" name="especie" value="gato">
+                    <label for="gato">Gato</label>
+
+                    <input type="submit" value="Buscar">
+
+                </form>
+            </div>
 
             {% for publicacion in publicaciones %}
 

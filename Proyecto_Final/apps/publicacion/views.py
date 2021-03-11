@@ -1,9 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
 from apps.publicacion.models import Contador
-from apps.mascota.models import Mascota
 
 
 class Post_Form(ModelForm):
@@ -38,32 +36,39 @@ def crear_publicacion(request):
     return render(request, 'publicacion/crear_publicacion.html', {'form': form})
 
 
-def ver_publicaciones(request):
+def ver_mis_publicaciones(request):
 
-    context = {'publicaciones': Publicacion.objects.all,
-               'mascotas': Mascota.objects.all}
+    context = {'publicaciones': Publicacion.objects.filter(usuario_creador=request.user)}
 
-    return render(request, 'publicacion/ver_publicaciones.html', context)
-
-
-def filtrar_por_especie(request):
-
-    if request.GET['prd']:
-
-        especie = request.GET['prd']
-
-        context = {'publicaciones': Publicacion.objects.filter(especie=especie),
-                   'mascotas': Mascota.objects.all}
-
-    return HttpResponse()
+    return render(request, "publicacion/ver_mis_publicaciones.html", context)
 
 
-def filtrar_por_sexo(request):
+def ver_publicaciones_A(request):
 
-    context = {'publicaciones': Publicacion.objects.all,
-               'mascotas': Mascota.objects.all}
+    context = {'publicaciones': Publicacion.objects.all}
 
-    return render(request, 'publicacion/ver_publicaciones.html', context)
+    return render(request, 'publicacion/ver_publicaciones_A.html', context)
+
+
+def ver_publicaciones_B(request):
+
+    context = {}
+
+    if request.GET['especie']:
+
+        especie = request.GET['especie']
+
+        publicaciones = Publicacion.objects.filter(especie=especie)
+
+        if especie == 'perro':
+            especie = 'Perro'
+        else:
+            especie = 'Gato'
+
+        context = {'publicaciones': publicaciones,
+                   'especie': especie}
+
+    return render(request, 'publicacion/ver_publicaciones_B.html', context)
 
 
 # __________________ELIMINAR PUBLICACION
