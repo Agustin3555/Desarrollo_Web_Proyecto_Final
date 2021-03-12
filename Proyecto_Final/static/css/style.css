@@ -332,7 +332,7 @@ main a:hover {
 /*pie de pagina*/
 footer {
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
