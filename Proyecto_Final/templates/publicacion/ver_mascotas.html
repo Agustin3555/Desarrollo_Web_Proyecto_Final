@@ -11,7 +11,7 @@
         <div id="mascotas">
             <h2 class="titulo">Mascotas</h2>
 
-            {% for mascota in mascotas %}
+            {% for mascota, bool in mascotas_dic.items %}
 
                 <ul>
                     <li>Foto: <img src="{{ MEDIA_URL }}{{ mascota.foto.url }}"></li>
@@ -23,29 +23,17 @@
                     <li>Futuro Dueño: {{ mascota.usuario_futuro_duenio }}</li>
                 </ul>
 
-                {% for postulacion in mis_postulaciones %}
+                {% if bool %}
 
-                    {% if postulacion.mascota == mascota %}
+                    <p>Ya estas postulado</p>
 
-                        {% if forloop.first %}
+                {% else %}
 
-                            <p>Ya estas postulado</p>
+                    <form action="{% url 'confirmar_postulacion' %}" method="get">
+                        <button type="submit" name="mascota" value="{{ mascota }}">Postularce</button>
+                    </form>
 
-                        {% endif %}
-
-                    {% else %}
-
-                        {% if forloop.first %}
-
-                            <form action="{% url 'confirmar_postulacion' %}" method="get">
-                                <button type="submit" name="mascota" value="{{ mascota }}">Postularce</button>
-                            </form>
-
-                        {% endif %}
-
-                    {% endif %}
-
-                {% endfor %}
+                {% endif %}
 
             {% endfor %}
 

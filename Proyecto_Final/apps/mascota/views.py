@@ -54,7 +54,6 @@ def crear_mascota(request):
 def ver_mascotas(request):
 
     mis_postulaciones = Postulante.objects.filter(usuario_postulado=request.user)
-
     context = {'mis_postulaciones': mis_postulaciones}
 
     if request.GET['publicacion']:
@@ -62,7 +61,34 @@ def ver_mascotas(request):
         publicacion = get_first_number_found(request.GET['publicacion'])
         mascotas = Mascota.objects.filter(publicacion=publicacion)
 
-        context['mascotas'] = mascotas
+        lista = []
+
+        for i in range(len(mascotas)):
+
+            iguales = False
+
+            for j in range(len(mis_postulaciones)):
+
+                if mis_postulaciones[j].mascota.id_mascota == mascotas[i].id_mascota:
+
+                    iguales = True
+                    break
+
+                else:
+                    iguales = False
+
+            if iguales:
+                lista.append(True)
+            else:
+                lista.append(False)
+
+        mascotas_dic = {}
+
+        for i in range(len(mascotas)):
+
+            mascotas_dic[mascotas[i]] = lista[i]
+
+        context['mascotas_dic'] = mascotas_dic
         context['publicacion'] = publicacion
 
     return render(request, 'publicacion/ver_mascotas.html', context)
