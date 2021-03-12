@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from apps.publicacion.models import Publicacion
 from apps.publicacion.models import Contador
+from apps.mascota.views import get_first_number_found
+from apps.mascota.models import Mascota
 
 
 class Post_Form(ModelForm):
@@ -41,6 +43,33 @@ def ver_mis_publicaciones(request):
     context = {'publicaciones': Publicacion.objects.filter(usuario_creador=request.user)}
 
     return render(request, "publicacion/ver_mis_publicaciones.html", context)
+
+
+def confirmar_eliminacion(request):
+
+    context = {}
+
+    if request.GET['publicacion']:
+
+        publicacion_a_eliminar = get_first_number_found(request.GET['publicacion'])
+        publicacion = Publicacion.objects.filter(id_publicacion=publicacion_a_eliminar)[0]
+
+        context = {'publicacion': publicacion,
+                   'publicacion_a_eliminar': publicacion_a_eliminar}
+
+    return render(request, 'publicacion/eliminar_publicacion.html', context)
+
+
+def eliminar_publicacion(request):
+
+    if request.GET['publicacion_a_eliminar']:
+
+        publicacion = request.GET['publicacion_a_eliminar']
+
+        Publicacion.objects.filter(id_publicacion=publicacion).delete()
+        Mascota.objects.filter(publicacion=publicacion).delete()
+
+    return redirect(to='ver_mis_publicaciones')
 
 
 def ver_publicaciones_A(request):

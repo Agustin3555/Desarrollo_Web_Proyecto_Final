@@ -23,6 +23,30 @@
                     <li>Futuro Dueño: {{ mascota.usuario_futuro_duenio }}</li>
                 </ul>
 
+                {% for postulacion in mis_postulaciones %}
+
+                    {% if postulacion.mascota == mascota %}
+
+                        {% if forloop.first %}
+
+                            <p>Ya estas postulado</p>
+
+                        {% endif %}
+
+                    {% else %}
+
+                        {% if forloop.first %}
+
+                            <form action="{% url 'confirmar_postulacion' %}" method="get">
+                                <button type="submit" name="mascota" value="{{ mascota }}">Postularce</button>
+                            </form>
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endfor %}
+
             {% endfor %}
 
         </div>
