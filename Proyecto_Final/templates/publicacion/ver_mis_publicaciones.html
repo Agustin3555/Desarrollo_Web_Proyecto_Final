@@ -25,9 +25,11 @@
                     </ul>
 
                     <form action="{% url 'ver_mascotas' %}" method="get">
-
                         <button type="submit" name="publicacion" value="{{ publicacion }}">Ver Mascotas</button>
+                    </form>
 
+                    <form action="{% url 'confirmar_eliminacion' %}" method="get">
+                        <button type="submit" name="publicacion" value="{{ publicacion }}">Eliminar</button>
                     </form>
 
                 </div>
