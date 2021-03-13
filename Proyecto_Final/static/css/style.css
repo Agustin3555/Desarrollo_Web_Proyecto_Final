@@ -11,6 +11,10 @@ body {
     background-color: #F0EFEB;
 }
 
+.img {
+  max-width: 10%;
+  height: auto;
+}
 
 /*tipografias*/
 .epigrafe{

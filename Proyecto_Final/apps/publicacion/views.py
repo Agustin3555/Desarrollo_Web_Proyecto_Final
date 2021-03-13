@@ -71,14 +71,14 @@ def eliminar_publicacion(request):
 
     return redirect(to='ver_mis_publicaciones')
 
-
+#publicaciones sin filtrar
 def ver_publicaciones_A(request):
 
     context = {'publicaciones': Publicacion.objects.all}
 
     return render(request, 'publicacion/ver_publicaciones_A.html', context)
 
-
+#publicaciones filtradas
 def ver_publicaciones_B(request):
 
     context = {}

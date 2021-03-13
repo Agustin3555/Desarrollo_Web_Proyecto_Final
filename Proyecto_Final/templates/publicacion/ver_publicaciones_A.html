@@ -29,12 +29,18 @@
                 <div id="publicacion">
 
                     <ul>
-                        <li>Usuario: {{ publicacion.usuario_creador }}</li>
-                        <li>Especie: {{ publicacion.especie }}</li>
-                        <li>Foto: <img src="{{ MEDIA_URL }}{{ publicacion.foto.url }}"></li>
-                        <li>Descripción: {{ publicacion.descripcion }}</li>
-                        <li>Fecha: {{ publicacion.fecha }}</li>
-                        <li>Estado: {{ publicacion.estado }}</li>
+                        <li> 
+                            <p>Usuario:</p> 
+                            <form action="{% url 'ver_usuario_externo' %}" method="get">
+                                <input type="hidden" name="usuario_creador" value=" usuario_creador ">
+                                <a href="{% url 'ver_usuario_externo' %}">{{ publicacion.usuario_creador }}</a>
+                            </form>
+                        </li>
+                        <li> <p>Especie:</p> {{ publicacion.especie }}</li>
+                        <li> <p>Foto:</p> <img src="{{ MEDIA_URL }}{{ publicacion.foto.url }}"></li>
+                        <li> <p>Descripción:</p> {{ publicacion.descripcion }}</li>
+                        <li> <p>Fecha:</p> {{ publicacion.fecha }}</li>
+                        <li> <p>Estado:</p> {{ publicacion.estado }}</li>
                     </ul>
 
                     <form action="{% url 'ver_mascotas' %}" method="get">

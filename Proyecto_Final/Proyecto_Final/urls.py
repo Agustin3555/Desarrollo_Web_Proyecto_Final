@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('apps.usuario.urls')),
     path('', include('apps.denuncia.urls')),
     path('', include('apps.postulante.urls')),
+    path('', include('apps.mensaje.urls'))
 ]
 
 if settings.DEBUG:
