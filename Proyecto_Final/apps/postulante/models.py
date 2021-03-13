@@ -9,4 +9,3 @@ class Postulante(models.Model):
     mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE, related_name="+", null=True)
     usuario_postulado = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="+", null=True)
     fecha = models.DateTimeField(auto_now=True, null=False)
-    comentario = models.CharField(max_length=500, null=True)
