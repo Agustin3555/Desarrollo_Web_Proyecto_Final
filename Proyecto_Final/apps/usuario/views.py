@@ -14,6 +14,16 @@ def ver_perfil(request):
 
     return render(request, "usuario/ver_perfil.html", context)
 
+def ver_usuario_externo(request):
+	context = {}
+
+	if request.GET.get('usuario_creador'):
+
+		publicacion = Publicacion.objects.filter(usuario_creador=request.GET.get('publicacion.usuario_creador'))
+		context = {'publicacion' : publicacion, 'usuario' : request.GET.get('publicacion.usuario_creador')}
+	return render(request, "usuario/ver_usuario_externo.html",context)
+
+
 class UserForm(UserChangeForm):
 
     class Meta:
@@ -50,6 +60,7 @@ def editar_perfil(request):
 			Usuario.objects.filter(username=request.user.username).update(email=form['email'].value())
 		if form['descripcion_propia'].value():
 			Usuario.objects.filter(username=request.user.username).update(descripcion_propia=form['descripcion_propia'].value())
-		return redirect(to='ver_perfil')
+		return redirect('ver_perfil')
 
-	return render(request, "registration/editar_perfil.html", {'form':form})
+	return render(request, "usuario/editar_perfil.html", {'form':form})
+
