@@ -29,3 +29,31 @@ def postularce(request):
         postulante.save()
 
     return redirect(to='ver_publicaciones')
+
+
+def elegir_duenio(request):
+
+    context = {}
+
+    if request.GET['mascota']:
+
+        mascota = get_first_number_found(request.GET['mascota'])
+        postulantes = Postulante.objects.filter(mascota=mascota)
+
+        context['postulantes'] = postulantes
+        context['mascota'] = mascota
+
+    return render(request, 'publicacion/elegir_duenio.html', context)
+
+
+def hacer_duenio(request):
+
+    if request.GET['postulante']:
+
+        mascota = request.GET['mascota']
+        postulante = get_first_number_found(request.GET['postulante'])
+
+        Mascota.objects.filter(id_mascota=mascota).update(usuario_futuro_duenio=postulante)
+        Mascota.objects.filter(id_mascota=mascota).update(estado=False)
+
+    return redirect(to='ver_mis_publicaciones')

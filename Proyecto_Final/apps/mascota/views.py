@@ -94,6 +94,21 @@ def ver_mascotas(request):
     return render(request, 'publicacion/ver_mascotas.html', context)
 
 
+def ver_mis_mascotas(request):
+
+    context = {}
+
+    if request.GET['publicacion']:
+
+        publicacion = get_first_number_found(request.GET['publicacion'])
+        mascotas = Mascota.objects.filter(publicacion=publicacion)
+
+        context['mascotas'] = mascotas
+        context['publicacion'] = publicacion
+
+    return render(request, 'publicacion/ver_mis_mascotas.html', context)
+
+
 def get_first_number_found(text: str):
 
     i = 0
