@@ -12,3 +12,6 @@ class Usuario(AbstractUser):
     descripcion_propia = models.CharField(max_length=2000, null=True)
     cantidad_de_calificaciones = models.IntegerField(null=True)
     promedio_calificacion = models.FloatField(null=True)
+
+
+# Carolina123: HA.2JzqXf:BCJKx
