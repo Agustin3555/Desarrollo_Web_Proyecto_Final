@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from apps.mascota.models import Mascota
 from apps.publicacion.models import Publicacion
 from apps.publicacion.models import Contador
+from apps.postulante.models import Postulante
 
 
 class Pet_Form(ModelForm):
@@ -40,7 +41,7 @@ def crear_mascota(request):
                 .update(i=pet_number - 1)
 
             if pet_number == 1:
-                return redirect('home')
+                return redirect('ver_mis_publicaciones')
             else:
                 return redirect('crear_mascota')
 
@@ -52,15 +53,43 @@ def crear_mascota(request):
 
 def ver_mascotas(request):
 
-    context = {}
+    mis_postulaciones = Postulante.objects.filter(usuario_postulado=request.user)
+    context = {'mis_postulaciones': mis_postulaciones}
 
     if request.GET['publicacion']:
 
         publicacion = get_first_number_found(request.GET['publicacion'])
         mascotas = Mascota.objects.filter(publicacion=publicacion)
 
-        context = {'mascotas': mascotas,
-                   'publicacion': publicacion}
+        lista = []
+
+        for i in range(len(mascotas)):
+
+            iguales = False
+
+            for j in range(len(mis_postulaciones)):
+
+                if mis_postulaciones[j].mascota.id_mascota == mascotas[i].id_mascota:
+
+                    iguales = True
+                    break
+
+                else:
+                    iguales = False
+
+            if iguales:
+                lista.append(True)
+            else:
+                lista.append(False)
+
+        mascotas_dic = {}
+
+        for i in range(len(mascotas)):
+
+            mascotas_dic[mascotas[i]] = lista[i]
+
+        context['mascotas_dic'] = mascotas_dic
+        context['publicacion'] = publicacion
 
     return render(request, 'publicacion/ver_mascotas.html', context)
 
